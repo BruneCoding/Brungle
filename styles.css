@@ -12,6 +12,11 @@
              border-radius: 20px;
              display: none;
       }
+
+#icons {
+filter: invert(1);
+    width: 25px;
+}
      
      
      
