@@ -9,11 +9,16 @@
       var currentValue = parseInt(localStorage.getItem('counter')) || 0;
       document.getElementById('counter').textContent = currentValue;
     };
-    var searchInput = document.getElementById("searchInput");
+                              var searchInput = document.getElementById("searchInput");
 
+ searchInput.addEventListener("keyup", function(event) {
+   const searchIcons = document.querySelectorAll('.search-icons');
+    const assDiv = document.querySelector('.ass');
 
-    // Listen for keyup event
-    searchInput.addEventListener("keyup", function(event) {
+  assDiv.classList.add('searchIcon');
+            setTimeout(() => {
+                assDiv.classList.remove('searchIcon');
+
         if (event.keyCode === 13) {
             incrementCounter()
             var query = searchInput.value;
@@ -22,34 +27,8 @@
             window.location.href = searchURL; // Redirect to Google search URL on the current tab
             var currentValue = parseInt(localStorage.getItem('counter')) || 0;
       // Increment the counter value by
+         }, 1000);
         }
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    const searchIcons = document.querySelectorAll('.search-icons');
-    const assDiv = document.querySelector('.ass');
-
-    searchIcons.forEach(icon => {
-        icon.addEventListener('click', function() {
-            assDiv.classList.add('searchIcon');
-            setTimeout(() => {
-                assDiv.classList.remove('searchIcon');
-
-                var query = document.getElementById('searchInput').value;
-
-                // Encode the query to use in the URL
-                var encodedQuery = encodeURIComponent(query);
-
-                // Create the Google search URL
-                var searchURL = "https://www.google.com/search?q=" + encodedQuery; // Google search URL
-
-                // Redirect to Google search URL on the current tab
-                window.location.href = searchURL;
-                var currentValue = parseInt(localStorage.getItem('counter')) || 0;
-      incrementCounter()
-            }, 1000);
-        });
     });
 });
 
